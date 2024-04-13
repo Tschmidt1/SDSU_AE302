@@ -35,6 +35,7 @@ clear all;
 clc;
 
 % Add path to Matlab that are called in this script here
+addpath HelperFunctions\
 
 
 % Set default interpreters
@@ -156,13 +157,13 @@ for i = 1:numCharLines
     % Compute coordinates and KPlus values for each node
     if i == 1
          Node{i}.KPlus  = Theta - Nu;
-         Node{i}.Coords = computeIntersectionPoint([0,AStar/2], ...
+         Node{i}.Coords = calculateIntersectionPoint([0,AStar/2], ...
                                                          Theta-Mu,    ...
                                                          [0, 0],      ...
                                                          0.0);
     else
          Node{i}.KPlus  = Node{i-1}.KPlus;
-         Node{i}.Coords = computeIntersectionPoint([0,AStar/2], ...
+         Node{i}.Coords = calculateIntersectionPoint([0,AStar/2], ...
                                                          Theta-Mu,    ...
                                                          Node{i-1}.Coords,      ...
                                                          Node{i-1}.Theta + Node{i-1}.Mu);
@@ -172,7 +173,7 @@ end
 
 % Compute the final "initial" node that is located on the nozzle wall
 Node{numCharLines+1}.ID     = numCharLines + 1;
-Node{numCharLines+1}.Coords = computeIntersectionPoint([0,AStar/2], ...
+Node{numCharLines+1}.Coords = calculateIntersectionPoint([0,AStar/2], ...
                                                          Theta,    ...
                                                          Node{numCharLines}.Coords,      ...
                                                          Node{numCharLines}.Theta + Node{i-1}.Mu);
@@ -230,7 +231,7 @@ while keepComputing
         Node{i}.Mu     = Mu;
         Node{i}.KPlus  = KPlus;
         Node{i}.KMinus = KMinus;
-        Node{i}.Coords = computeIntersectionPoint(point1, angle1, point2, angle2);
+        Node{i}.Coords = calculateIntersectionPoint(point1, angle1, point2, angle2);
 %         Node{i}.R = R;
 %         Node{i}.U = U;
 %         Node{i}.V = V;
@@ -254,7 +255,7 @@ while keepComputing
         Node{i}.Mu     = Mu;
         Node{i}.KPlus  = KPlus;
         Node{i}.KMinus = Theta + Nu;
-        Node{i}.Coords = computeIntersectionPoint(point1, angle1, point2, angle2);
+        Node{i}.Coords = calculateIntersectionPoint(point1, angle1, point2, angle2);
 %         Node{i}.R = R;
 %         Node{i}.U = U;
 %         Node{i}.V = V;
@@ -288,7 +289,7 @@ while keepComputing
         Node{i}.Mu     = Mu;
         Node{i}.KPlus  = KPlus;
         Node{i}.KMinus = KMinus;
-        Node{i}.Coords = computeIntersectionPoint(point1, angle1, point2, angle2);
+        Node{i}.Coords = calculateIntersectionPoint(point1, angle1, point2, angle2);
 %         Node{i}.R = R;
 %         Node{i}.U = U;
 %         Node{i}.V = V;

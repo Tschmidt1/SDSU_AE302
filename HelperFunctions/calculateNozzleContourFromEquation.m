@@ -19,7 +19,7 @@ function [y] = calculateNozzleContourFromEquation(AStar, x)
 
 % For simplicity, we use a simple y = x^(1/2) + yo equation to compute the
 % nozzle wall.
-nozzleWall = @(xIn,yIn) (xIn).^(1/2) + yIn;
+nozzleWall = @(xIn,yIn) (xIn + 1.0).^(1/2) + yIn;
 
 % Compute y coordinates
 y = nozzleWall(x,AStar/2);
