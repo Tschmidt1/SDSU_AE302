@@ -114,7 +114,7 @@ nozzleWallNodeIDs         = [];
 
 %% Set up -- Initiliaze Variables %%
 
-% COMPUTE FLOW VARIABLES FROM CHAMBER AND AMBIENT CONDITIONS HERE
+% COMPUTE FLOW VARIABLES FROM CHAMBER AND ENT CONDITIONS HERE
 
 % Compute the deflection of the flow across each expansion wave
 % (characteristic line) at the throat. This is in degrees.
